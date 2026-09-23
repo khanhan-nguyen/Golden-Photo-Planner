@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden — Photo Timing Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <p class="eyebrow">PHOTO TIMING PLANNER</p>
+      <h1>Golden</h1>
+      <p class="hero-copy">
+        Find golden hour, blue hour, sunrise, and sunset for your next photo session.
+      </p>
+    </section>
+
+    <section class="panel planner-panel">
+      <form id="plannerForm">
+        <div class="field">
+          <label for="locationInput">Location</label>
+          <input
+            id="locationInput"
+            type="text"
+            placeholder="New York, Paris, Tokyo..."
+            autocomplete="off"
+            required
+          >
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="dateInput">Date</label>
+            <input id="dateInput" type="date" required>
+          </div>
+
+          <div class="field">
+            <label for="shootType">Shoot type</label>
+            <select id="shootType">
+              <option value="Portrait">Portrait</option>
+              <option value="Landscape">Landscape</option>
+              <option value="Street">Street</option>
+              <option value="Architecture">Architecture</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="primary-button" type="submit">Find My Light</button>
+      </form>
+
+      <p id="statusMessage" class="status-message"></p>
+    </section>
+
+    <section id="resultsSection" class="results hidden">
+      <div class="results-header">
+        <div>
+          <p class="eyebrow">YOUR SHOOT PLAN</p>
+          <h2 id="resultLocation"></h2>
+          <p id="resultDate" class="muted"></p>
+        </div>
+        <button id="saveShootButton" class="secondary-button" type="button">
+          Save Shoot
+        </button>
+      </div>
+
+      <div class="time-grid">
+        <article class="time-card">
+          <span class="time-icon">🌅</span>
+          <p class="card-label">Sunrise</p>
+          <h3 id="sunriseTime">—</h3>
+        </article>
+
+        <article class="time-card">
+          <span class="time-icon">🌇</span>
+          <p class="card-label">Sunset</p>
+          <h3 id="sunsetTime">—</h3>
+        </article>
+
+        <article class="time-card">
+          <span class="time-icon">✨</span>
+          <p class="card-label">Morning Golden Hour</p>
+          <h3 id="morningGolden">—</h3>
+        </article>
+
+        <article class="time-card">
+          <span class="time-icon">☀️</span>
+          <p class="card-label">Evening Golden Hour</p>
+          <h3 id="eveningGolden">—</h3>
+        </article>
+
+        <article class="time-card">
+          <span class="time-icon">💙</span>
+          <p class="card-label">Morning Blue Hour</p>
+          <h3 id="morningBlue">—</h3>
+        </article>
+
+        <article class="time-card">
+          <span class="time-icon">🌌</span>
+          <p class="card-label">Evening Blue Hour</p>
+          <h3 id="eveningBlue">—</h3>
+        </article>
+      </div>
+
+      <article class="recommendation-card">
+        <p class="eyebrow">RECOMMENDED PLAN</p>
+        <h3 id="recommendationTitle"></h3>
+        <div id="recommendationText"></div>
+      </article>
+
+      <article class="details-card">
+        <div>
+          <span class="detail-label">Moon</span>
+          <strong id="moonInfo">—</strong>
+        </div>
+        <div>
+          <span class="detail-label">Sunset direction</span>
+          <strong id="sunsetDirection">—</strong>
+        </div>
+        <div>
+          <span class="detail-label">Timezone</span>
+          <strong id="timezoneInfo">—</strong>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel saved-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">LOCAL STORAGE</p>
+          <h2>Saved Shoots</h2>
+        </div>
+        <button id="clearSavedButton" class="text-button" type="button">
+          Clear All
+        </button>
+      </div>
+
+      <div id="savedShootsList" class="saved-list">
+        <p class="muted">No shoots saved yet.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Location search powered by Open-Meteo / GeoNames.
+        Solar timing data powered by
+        <a href="https://sunrise-sunset.org/" target="_blank" rel="noreferrer">
+          Sunrise-Sunset.org
+        </a>.
+      </p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
